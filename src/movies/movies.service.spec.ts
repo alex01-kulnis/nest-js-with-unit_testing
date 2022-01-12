@@ -17,25 +17,25 @@ describe('MoviesService', () => {
     expect(service).toBeDefined();
   });
 
-  describe('Тестирование функции getAll', () => {
-    it('Должен возращаться массив', () => {
+  describe('Function testing getAll', () => {
+    it('An array should be returned', () => {
       const result = service.getAll();
       expect(result).toBeInstanceOf(Array);
     });
   });
 
-  describe('Тестирование функции getOne', () => {
-    it('Должен возвращаться фильм', () => {
+  describe('Function testing getOne', () => {
+    it('should be return film', () => {
       service.create({
-        title: 'Тест фильм',
-        genres: ['Тест жанр'],
+        title: 'Test film',
+        genres: ['Test genre'],
         year: 2000,
       });
       const movie = service.getOne(1);
       expect(movie).toBeDefined();
     });
 
-    it('Должно возвращаться ошибка NotFoundException', () => {
+    it('Should be return NotFoundException', () => {
       try {
         service.getOne(1111);
       } catch (e) {
@@ -44,11 +44,11 @@ describe('MoviesService', () => {
     });
   });
 
-  describe('Тестирование функции remove', () => {
-    it('Фильм удаляется ', () => {
+  describe('Function testing remove', () => {
+    it('Film should be removed ', () => {
       service.create({
-        title: 'Тест фильм',
-        genres: ['Тест жанр'],
+        title: 'Test film',
+        genres: ['Test genre'],
         year: 2000,
       });
       const allMovies = service.getAll().length;
@@ -57,7 +57,7 @@ describe('MoviesService', () => {
       expect(afterRemove).toBeLessThan(allMovies);
     });
 
-    it('Должно возвращаться ошибка NotFoundException', () => {
+    it('Should be return NotFoundException', () => {
       try {
         service.remove(1111);
       } catch (e) {
@@ -66,12 +66,12 @@ describe('MoviesService', () => {
     });
   });
 
-  describe('Тестирование функции create', () => {
-    it('Фильм создается', () => {
+  describe('Function testing create', () => {
+    it('Film should be created', () => {
       const beforeCreate = service.getAll().length;
       service.create({
-        title: 'Тест фильм',
-        genres: ['Тест жанр'],
+        title: 'Test film',
+        genres: ['Test genre'],
         year: 2000,
       });
       const afterCreate = service.getAll().length;
@@ -79,19 +79,19 @@ describe('MoviesService', () => {
     });
   });
 
-  describe('Тестирование функции patch', () => {
-    it('Фильм изменён', () => {
+  describe('Function testing patch', () => {
+    it('Film should be changed', () => {
       service.create({
-        title: 'Тест фильм',
-        genres: ['Тест жанр'],
+        title: 'Test film',
+        genres: ['Test genre'],
         year: 2000,
       });
-      service.patch(1, { title: 'Обновленный тест' });
+      service.patch(1, { title: 'updated test' });
       const movie = service.getOne(1);
-      expect(movie.title).toEqual('Обновленный тест');
+      expect(movie.title).toEqual('updated test');
     });
 
-    it('Должно возвращаться ошибка NotFoundException', () => {
+    it('Should be return NotFoundException', () => {
       try {
         service.patch(1111, { title: '' });
       } catch (e) {

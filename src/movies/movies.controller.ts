@@ -28,7 +28,7 @@ export class MoviesController {
 
   @Get('search')
   search(@Query('year') searchingYear: string) {
-    return `Мы ищем фильм , выпущенный после : ${searchingYear}`;
+    return `We find film ,realse after : ${searchingYear}`;
   }
 
   @Post()
