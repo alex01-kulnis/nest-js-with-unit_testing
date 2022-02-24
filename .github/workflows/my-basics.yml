@@ -33,6 +33,15 @@ jobs:
           echo "hi2"
           echo "Application name: ${{ env.APPLICATION_NAME }} "
           
+    - name: List current folder
+      run: ls -la
+          
+    - name: git clone my repo
+      uses: actions/checkout@v1
+      
+    - name: List current folder
+      run: ls -la
+          
 
   my_testing2:
     # The type of runner that the job will run on
